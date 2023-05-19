@@ -18,8 +18,8 @@ def round_robin(config_path:str):
         robin = [teams[0]] + teams[i:] + teams[1:i]
         print(f"matchday: {i}")
         for k in range(n//2):
-            h, a = k, -k-1
-            print(f"{robin[a if swap else h]} vs {robin[h if swap else a]}")
+            t = (k, -k-1)
+            print(f"{robin[t[swap]]} vs {robin[t[1-swap]]}")
         print('')
         swap ^= 1
 
