@@ -17,12 +17,11 @@ def round_robin(config_path:str):
     for i in range(1, n):
         robin = [teams[0]] + teams[i:] + teams[1:i]
         print(f"matchday: {i}")
-        swap ^= 1
         for k in range(n//2):
-            match = f"{robin[-k-1]} vs {robin[k]}"
-            if swap: match = f"{robin[k]} vs {robin[-k-1]}"
-            print(match)
+            h, a = k, -k-1
+            print(f"{robin[a if swap else h]} vs {robin[h if swap else a]}")
         print('')
+        swap ^= 1
 
 
 round_robin("config.json")
